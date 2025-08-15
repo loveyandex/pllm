@@ -43,3 +43,21 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
  GET /api/projects?limit=50 200 in 25064ms
  GET / 200 in 49ms
  ✓ Compiled in 38ms
+ ✓ Compiled / in 92ms
+ GET / 200 in 375ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 219ms
+ ⚠ Cross origin request detected from maryland-keyboards-threatened-assignment.trycloudflare.com to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ GET / 200 in 51ms
+ ✓ Compiled /projects in 14ms
+ GET /projects 200 in 213ms
+ GET /api/projects?limit=50 200 in 27166ms
+ GET / 200 in 62ms
+ GET /projects 200 in 46ms
+ GET / 200 in 40ms
+ GET /api/projects?limit=50 200 in 1929ms
+ POST /api/chat 200 in 77ms
+ POST /api/chat 200 in 25ms
+ POST /api/chat 200 in 20ms
+ POST /api/chat 200 in 23ms
+ POST /api/chat 200 in 20ms
