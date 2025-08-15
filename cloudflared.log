@@ -187,3 +187,19 @@
 2025-08-15T11:59:47Z ERR Failed to serve tunnel connection error="context canceled" connIndex=0 event=0 ip=198.41.192.107
 2025-08-15T11:59:47Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.192.107
 2025-08-15T12:00:14Z ERR Connection terminated error="context canceled" connIndex=0
+2025-08-15T13:03:31Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.192.107
+2025-08-15T13:03:31Z ERR Failed to serve tunnel connection error="context canceled" connIndex=0 event=0 ip=198.41.192.107
+2025-08-15T13:03:31Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.192.107
+2025-08-15T13:03:46Z ERR Connection terminated error="context canceled" connIndex=0
+2025-08-15T13:08:41Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.192.107
+2025-08-15T13:08:41Z ERR Failed to serve tunnel connection error="context canceled" connIndex=0 event=0 ip=198.41.192.107
+2025-08-15T13:08:41Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.192.107
+2025-08-15T13:09:12Z ERR Connection terminated error="context canceled" connIndex=0
+2025-08-15T13:09:44Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.192.107
+2025-08-15T13:09:44Z ERR Failed to serve tunnel connection error="context canceled" connIndex=0 event=0 ip=198.41.192.107
+2025-08-15T13:09:44Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.192.107
+2025-08-15T13:09:52Z ERR Connection terminated error="context canceled" connIndex=0
+2025-08-15T13:15:02Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.192.107
+2025-08-15T13:15:02Z ERR Failed to serve tunnel connection error="context canceled" connIndex=0 event=0 ip=198.41.192.107
+2025-08-15T13:15:02Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.192.107
+2025-08-15T13:15:32Z ERR Connection terminated error="context canceled" connIndex=0
