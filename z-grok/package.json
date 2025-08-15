@@ -33,6 +33,7 @@
     "postcss": "latest",
     "postcss-import": "latest",
     "postcss-nesting": "latest",
-    "autoprefixer": "latest"
+    "autoprefixer": "latest",
+    "@tailwindcss/postcss": "latest"
   }
 }
