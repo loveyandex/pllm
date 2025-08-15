@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 
 interface ChatMessage {
   id: string;
@@ -24,13 +25,10 @@ export default function Page() {
   const listRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    listRef.current?.scrollTo({ top: listRef.current.scrollHeight });
+    listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: "smooth" });
   }, [messages]);
 
-  async function onSend() {
-    const text = input.trim();
-    if (!text) return;
-    setInput("");
+  async function send(text: string) {
     const userMsg: ChatMessage = { id: crypto.randomUUID(), role: "user", content: text };
     setMessages((m) => [...m, userMsg, { id: crypto.randomUUID(), role: "assistant", content: "" }]);
     setLoading(true);
@@ -65,39 +63,53 @@ export default function Page() {
     }
   }
 
+  async function onSend() {
+    const text = input.trim();
+    if (!text) return;
+    setInput("");
+    await send(text);
+  }
+
+  function onKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      onSend();
+    }
+  }
+
   return (
-    <div className="container mx-auto max-w-4xl p-6 grid gap-4">
-      <div className="flex items-center gap-3">
-        <div className="h-8 w-8 rounded-md bg-neutral-900 border border-neutral-800" />
-        <div className="text-xl font-semibold tracking-tight">Z Grok</div>
-        <a href="/projects" className="ml-auto text-sm text-neutral-400 hover:text-white">Projects</a>
-      </div>
-      <div
-        ref={listRef}
-        className="rounded-lg border border-neutral-800 bg-neutral-950 p-4 h-[60vh] overflow-y-auto"
-      >
+    <div className="mx-auto max-w-3xl p-6 grid gap-4">
+      <div className="text-lg font-semibold tracking-tight">Chat</div>
+      <div ref={listRef} className="rounded-lg border border-neutral-800 bg-neutral-950 p-4 h-[60vh] overflow-y-auto space-y-3">
         {messages.map((m) => (
-          <div key={m.id} className="mb-3">
-            <div className="text-xs text-neutral-400 mb-1">
-              {m.role === "user" ? "You" : m.role === "assistant" ? "Z Grok" : "System"}
+          <div key={m.id} className={m.role === "user" ? "flex justify-end" : "flex justify-start"}>
+            <div className={
+              m.role === "user"
+                ? "max-w-[80%] rounded-lg bg-neutral-800 text-neutral-100 px-3 py-2"
+                : m.role === "assistant"
+                ? "max-w-[80%] rounded-lg bg-neutral-900 text-neutral-100 px-3 py-2"
+                : "max-w-[80%] rounded-lg border border-neutral-800 text-neutral-300 px-3 py-2"
+            }>
+              {m.content}
             </div>
-            <div className="whitespace-pre-wrap leading-relaxed text-neutral-200">{m.content}</div>
           </div>
         ))}
         {loading && (
           <div className="text-neutral-500 text-sm">Thinking…</div>
         )}
       </div>
-      <div className="flex gap-2">
-        <Input
+      <div className="flex gap-2 items-end">
+        <Textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Ask about projects, propose ideas, or save README articles…"
+          onKeyDown={onKeyDown}
+          placeholder="Ask about projects, propose ideas, or save README articles… (Shift+Enter = newline)"
+          className="min-h-[56px]"
         />
-        <Button onClick={onSend} disabled={loading}>Send</Button>
+        <Button onClick={onSend} disabled={loading} className="h-[56px] px-5">Send</Button>
       </div>
       <div className="text-xs text-neutral-500">
-        AI enforces access boundaries and rejects duplicate projects.
+        Enter to send. Shift+Enter for newline.
       </div>
     </div>
   );

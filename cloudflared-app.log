@@ -21,3 +21,15 @@
 2025-08-15T14:20:13Z INF Registered tunnel connection connIndex=0 connection=3bc54d14-f043-41c6-8a8e-13c019d184d6 event=0 ip=198.41.192.37 location=sea01 protocol=quic
 2025-08-15T14:22:50Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=0 event=1 ingressRule=0 originService=http://127.0.0.1:3000
 2025-08-15T14:22:50Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=0 dest=https://maryland-keyboards-threatened-assignment.trycloudflare.com/api/projects?limit=50 event=0 ip=198.41.192.37 type=http
+2025-08-15T15:00:48Z ERR Failed to serve tunnel connection error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=0 event=0 ip=198.41.192.37
+2025-08-15T15:00:48Z ERR Serve tunnel error error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=0 event=0 ip=198.41.192.37
+2025-08-15T15:00:48Z INF Retrying connection in up to 1s connIndex=0 event=0 ip=198.41.192.37
+2025-08-15T15:00:49Z ERR Connection terminated error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=0
+2025-08-15T15:01:05Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.192.37
+2025-08-15T15:01:05Z ERR Failed to serve tunnel connection error="context canceled" connIndex=0 event=0 ip=198.41.192.37
+2025-08-15T15:01:05Z INF Retrying connection in up to 4s connIndex=0 event=0 ip=198.41.192.37
+2025-08-15T15:01:06Z ERR Connection terminated error="context canceled" connIndex=0
+2025-08-15T15:01:34Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.192.37
+2025-08-15T15:01:34Z ERR Failed to serve tunnel connection error="context canceled" connIndex=0 event=0 ip=198.41.192.37
+2025-08-15T15:01:34Z INF Retrying connection in up to 8s connIndex=0 event=0 ip=198.41.192.37
+2025-08-15T15:01:41Z ERR Connection terminated error="context canceled" connIndex=0
