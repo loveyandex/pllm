@@ -32,7 +32,7 @@ export default function Page() {
     if (!text) return;
     setInput("");
     const userMsg: ChatMessage = { id: crypto.randomUUID(), role: "user", content: text };
-    setMessages((m) => [...m, userMsg]);
+    setMessages((m) => [...m, userMsg, { id: crypto.randomUUID(), role: "assistant", content: "" }]);
     setLoading(true);
     try {
       const res = await fetch("/api/chat", {
@@ -40,9 +40,24 @@ export default function Page() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: [...messages, userMsg] })
       });
-      if (!res.ok) throw new Error("Failed to get response");
-      const data = await res.json();
-      setMessages((m) => [...m, { id: crypto.randomUUID(), role: "assistant", content: data.reply }]);
+      if (!res.ok || !res.body) throw new Error("Failed to get response");
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let done = false;
+      let buffer = "";
+      while (!done) {
+        const { value, done: d } = await reader.read();
+        done = d;
+        if (value) buffer += decoder.decode(value, { stream: true });
+        if (buffer) {
+          setMessages((m) => {
+            const copy = [...m];
+            const lastIdx = copy.length - 1;
+            copy[lastIdx] = { ...copy[lastIdx], content: buffer };
+            return copy;
+          });
+        }
+      }
     } catch (err: any) {
       setMessages((m) => [...m, { id: crypto.randomUUID(), role: "assistant", content: "Error: " + err.message }]);
     } finally {
@@ -63,10 +78,10 @@ export default function Page() {
       >
         {messages.map((m) => (
           <div key={m.id} className="mb-3">
-            <div className="text-xs text-neutral-500 mb-1">
+            <div className="text-xs text-neutral-400 mb-1">
               {m.role === "user" ? "You" : m.role === "assistant" ? "Z Grok" : "System"}
             </div>
-            <div className="whitespace-pre-wrap leading-relaxed">{m.content}</div>
+            <div className="whitespace-pre-wrap leading-relaxed text-neutral-200">{m.content}</div>
           </div>
         ))}
         {loading && (

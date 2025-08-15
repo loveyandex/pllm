@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface Project {
   id: number;
@@ -33,7 +34,11 @@ export default function ProjectsPage() {
     <div className="grid gap-4">
       <div className="text-2xl font-semibold tracking-tight">Projects</div>
       {loading ? (
-        <div className="text-neutral-400">Loading…</div>
+        <div className="grid gap-2">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <Skeleton key={i} className="h-14 w-full" />
+          ))}
+        </div>
       ) : error ? (
         <div className="text-red-400">{error}</div>
       ) : (

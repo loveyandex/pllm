@@ -42,3 +42,4 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
  GET /projects 200 in 48ms
  GET /api/projects?limit=50 200 in 25064ms
  GET / 200 in 49ms
+ ✓ Compiled in 38ms
