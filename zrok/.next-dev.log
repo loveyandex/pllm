@@ -4,7 +4,10 @@
    - Network:      http://172.30.0.2:3001
 
  ✓ Starting...
- ✓ Compiled / in 2.4s
- GET / 200 in 2711ms
- GET / 200 in 54ms
- GET / 200 in 111ms
+ ✓ Compiled / in 2 ○ Compiling / ...
+ ✓ Compiled / in 2.1s
+ GET / 200 in 2399ms
+ GET / 200 in 65ms
+ GET / 200 in 39ms
+GET / 200 in 63ms
+ GET / 200 in 38ms
